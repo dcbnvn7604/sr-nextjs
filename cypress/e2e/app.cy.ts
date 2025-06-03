@@ -1,7 +1,7 @@
 describe('app', () => {
-  it('home', () => {
+  it('required login', () => {
     cy.visit('http://localhost:3000/');
     cy.get('h1').contains('Layout');
-    cy.get('h2').contains('Home');
+    cy.get('h2').contains('Login');
   });
 });
