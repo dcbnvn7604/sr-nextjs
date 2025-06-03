@@ -9,6 +9,10 @@ export const useFetchWHandle = () => {
       router.push('/login')
       return
     }
+    if (response.status == 403) {
+      router.push('/login')
+      return
+    }
     return response
   }
 }

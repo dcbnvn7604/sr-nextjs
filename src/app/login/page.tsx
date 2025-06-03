@@ -26,7 +26,7 @@ export default function Page() {
       body: JSON.stringify({username, password})
     })
     const result = await response.json()
-    setUser({id: result['id']})
+    setUser({id: result['id'], role: result['role']})
     router.push('/')
   }
 

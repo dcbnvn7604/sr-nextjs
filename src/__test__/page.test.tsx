@@ -21,7 +21,7 @@ describe('Page', () => {
     (fetch as jest.Mock).mockResolvedValueOnce({
       status: 401
     })
-    const user = {id: 1}
+    const user = {id: 1, role: 'user'}
     render(<CurrentUser.Provider value={user}><Page/></CurrentUser.Provider>)
     expect(fetch as jest.Mock).toBeCalled()
     await waitFor(() => {
