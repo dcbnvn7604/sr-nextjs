@@ -3,6 +3,7 @@ import { render, screen, waitFor } from '@testing-library/react'
 import Page from '@/app/page'
 import { CurrentUser } from '@/context/UserContext'
 import { expect, describe, beforeEach, it } from '@jest/globals';
+import Error from '@/component/Error';
 
 const mockPush = jest.fn()
 
@@ -26,6 +27,18 @@ describe('Page', () => {
     expect(fetch as jest.Mock).toBeCalled()
     await waitFor(() => {
       expect(mockPush).toBeCalledWith('/login')
+    })
+  })
+
+  it('error', async () => {
+    (fetch as jest.Mock).mockResolvedValueOnce({
+      status: 500,
+      ok: false
+    })
+    render(<Error><CurrentUser.Provider value={{id: 1}}><Page/></CurrentUser.Provider></Error>)
+    expect(fetch).toBeCalled()
+    await waitFor(() => {
+      expect(screen.getByTestId("error")).toHaveTextContent("Server error")
     })
   })
 })
