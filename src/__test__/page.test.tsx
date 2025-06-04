@@ -6,8 +6,8 @@ describe('Page', () => {
   it('renders a heading', () => {
     render(<Page />)
  
-    const heading = screen.getByRole('heading', { level: 1 })
+    const heading = screen.getByRole('heading', { level: 2 })
  
-    expect(heading).toBeInTheDocument()
+    expect(heading).toHaveTextContent("Welcome in English")
   })
 })
